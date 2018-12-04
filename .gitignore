@@ -1,0 +1,3 @@
+# Exclude Visual Studio Code runtime and settings files
+.vscode
+__pycache__
