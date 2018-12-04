@@ -4,7 +4,7 @@ import numpy as np
 
 def generate_neighborhood(triangles, num_vertices=None):
     """
-
+    Generates the vertex neighborhood necessary for label operations.
     """
     neighborhood = dict()
     if num_vertices is None:
@@ -27,7 +27,7 @@ def generate_neighborhood(triangles, num_vertices=None):
         
 def compress_labels(neighborhood, vertex_labels, as_dict=False):
     """
-    
+    Compresses the labels into boundary points.
     """
     boundaries = dict()
     visited_nodes = set()
@@ -60,7 +60,7 @@ def compress_labels(neighborhood, vertex_labels, as_dict=False):
 
 def decompress_labels(neighborhood, boundaries, as_dict=False):
     """
-    
+    Decompresses the labels from the boundary points and vertex neighborhood. Use reconstruct_labels() if you want a flat array.
     """
     if type(boundaries) is np.ndarray:
         temp = boundaries.T
@@ -94,13 +94,13 @@ def decompress_labels(neighborhood, boundaries, as_dict=False):
 
 def reconstruct_labels(neighborhood, boundaries, num_vertices):
     """
-    
+    Reconstructs labels into a flat array.
     """
     return reconstruct_from_dict(decompress_labels(neighborhood, boundaries, as_dict=True), num_vertices)
 
 def decompress_targets(target_nodes, neighborhood, boundaries):
     """
-    
+    Retrieves the labels of targeted nodes (referenced by vertex indices) from compressed and labeled boundary points.
     """
     if type(boundaries) is np.ndarray:
         boundaries = array_as_dok(boundaries)
@@ -132,7 +132,7 @@ def decompress_targets(target_nodes, neighborhood, boundaries):
 
 def decompress_component(target_nodes, neighborhood, boundaries):
     """
-    
+    Decompresses and returns the components that are connected to the targeted nodes.
     """
     if type(boundaries) is np.ndarray:
         boundaries = array_as_dok(boundaries)
@@ -163,7 +163,7 @@ def decompress_component(target_nodes, neighborhood, boundaries):
 
 def decompress_compartment_type(label_type, neighborhood, boundaries):
     """
-    
+    Decompresses the compartments for an entire label type.
     """
     if type(boundaries) is np.ndarray:
         boundaries = array_as_dok(boundaries)
@@ -221,7 +221,7 @@ def array_as_dok(label_array):
 
 def reconstruct_from_dict(label_dict, num_vertices):
     """
-    
+    Reconstructs the labels from a dictionary of nodes as keys and labels as values.
     """
     reconstructed_array = np.zeros(num_vertices, dtype=np.uint8)
     for i in range(num_vertices):
@@ -231,6 +231,7 @@ def reconstruct_from_dict(label_dict, num_vertices):
 
 def reconstruct_from_array(label_array, num_vertices):
     """
-    
+    Not implemented yet, use reconstruct_labels() instead. Reconstructs the labels from a 2D array with vertex indices in first column and labels in second column.
     """
+    raise NotImplementedError
     return dok_as_array(label_array)
