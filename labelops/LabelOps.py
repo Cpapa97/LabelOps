@@ -233,4 +233,4 @@ def reconstruct_from_array(label_array, num_vertices):
     """
     
     """
-    dok_as_array(label_array)
+    return dok_as_array(label_array)
