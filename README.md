@@ -18,7 +18,7 @@ from labelops import LabelOps as op
 # Assuming label data already stored in variable: vertex_labels
 
 # Compress labels
-neighborhood = op.generate_neighborhood(vertices)
+neighborhood = op.generate_neighborhood(triangles)
 compressed_labels = op.compress_labels(neighborhood, vertex_labels, as_dict=False)
 
 # Decompress labels into 2D array with vertex indices in first column and labels in second column
