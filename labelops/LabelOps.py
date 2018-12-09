@@ -233,5 +233,4 @@ def reconstruct_from_array(label_array, num_vertices):
     """
     Not implemented yet, use reconstruct_labels() instead. Reconstructs the labels from a 2D array with vertex indices in first column and labels in second column.
     """
-    raise NotImplementedError
-    return dok_as_array(label_array)
+    return reconstruct_from_dict(array_as_dok(label_array), num_vertices)
