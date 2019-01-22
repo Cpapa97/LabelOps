@@ -5,13 +5,11 @@ Operates on labeled neuronal meshes.
 
 # Installation
 ```
-git clone https://github.com/cajal/LabelOps.git
-cd LabelOps
-pip3 install .
+pip3 install labelops
 ```
 
 # Usage
-```
+```python
 from labelops import LabelOps as op
 
 # Assuming mesh data already stored in variables: vertices and triangles
